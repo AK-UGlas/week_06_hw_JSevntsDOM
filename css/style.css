@@ -1,0 +1,30 @@
+body {
+    margin: 0;
+    background: white;
+}
+
+.banner {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    align-items: center;
+    height: 280px;
+    width: 100vw;
+    background: linear-gradient(105deg, rgba(0, 160, 0, 1) 55%, white 65%, red 80%);
+}
+
+.banner > img {
+    background: transparent;
+    width: 220px;
+    height: 220px;
+}
+
+.banner > h1 {
+    font-size: 62pt;
+    color: white;
+    max-width: 60vw;
+}
+
+h1, h2 {
+    font-family: 'Creepster', cursive;
+}

@@ -2,15 +2,23 @@
 
 1. What is the return value of `document.createElement`? And what does it accept as an argument?
 
-Accepts a string describing the html element to be created (can be the tag name, class or ID). returns an HTML element of the specified tag
+Accepts a string describing the html element to be created (can be the tag name, class or ID). returns an HTML element of the specified tag.
+e.g "const hOneElement = document.createElement('h1')" <- creates an 'h1' HTML element and assigned to the variable hOneElement
 
 2. What is the return value of `document.querySelector`? And what does it accept as an argument?
 
-
+As above, accepts string describing html element(s) to find (name, class or ID). Returns the first element matching that string 
 
 3. What is the return value `document.querySelectorAll`?
 
+As above, but returns a NodeList of all elements matching the input string
+
 4. What is the difference between using `textContent` and `appendChild`?
+
+textContent refers to the text content of a specific html element (a property of the html element). e.g can be assigned with "hOneElement.textContent = 'This is a header' "
+
+appendChild is a node method, which takes in the argument of an html element and adds it as a child element of the parent node.
+e.g <elementVariableName>.appendChild(hOneElement) <- hOneElement (an HTML h1 element) is now a child of <elementVariableName>
 
 5. What is the event we handle to access the values of a form, and how do we access the values?
 
