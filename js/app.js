@@ -27,7 +27,7 @@ const populateToppingsList = function(toppings, container) {
         item.innerHTML = topping;
         item.setAttribute('id', 'a-topping');
         item.setAttribute('data-selected', "false");
-        item.setAttribute('style','color: white; padding: 12px 16px; text-decoration: none; width: 124px; display: block; background-color: rgb(211, 211, 211');
+        item.setAttribute('style','color: white; padding: 12px 16px; text-decoration: none; width: 124px; display: block; background-color: rgb(211, 211, 211)');
         
         // add 3 event listeners for each element:
         item.addEventListener('mouseenter', handleHover);
@@ -69,6 +69,12 @@ const handleHover = function(event) {
 const handleNewEntry = function(event) {
     event.preventDefault();
     const newPizza = createNewPizza(event);
+    const displayArea = document.querySelector('#display-pizzas');
+    displayArea.appendChild(newPizza);
+
+    // reset form and options object
+    options.numToppings = 0;
+    document.querySelector('.new-pizza-form').reset();
 };
 
 // create a new pizza item from entry form HERE
@@ -78,17 +84,30 @@ const createNewPizza = function(event) {
 
     // create elements and assign form data
     const name = document.createElement('h1');
-    name.textContent = event.target.name;
+    name.textContent = event.target.name.value;
     const author = document.createElement('h3');
-    author.textContent = event.target.created-by;
+
+    // insert placeholder if created_by is blank
+    const creator = event.target.created_by.value === "" ? "anon" : event.target.created_by.value;
+    author.textContent = `created by ${creator}`;
 
     const toppingsTitle = document.createElement('h4');
+    toppingsTitle.textContent = "Toppings"
     const toppingsList = document.createElement('ul');
 
     // retrieve toppings div and populate list
-    const div = document.querySelector(".toppings");
+    const toppings = document.querySelectorAll(".toppings > a");
 
-    // 
+    toppings.forEach((topping) => {
+        if (topping.dataset.selected === "true") {
+            topping.dataset.selected = "false";
+            topping.style.backgroundColor = 'rgb(211, 211, 211)';
+            const newTopping = document.createElement('li');
+            newTopping.textContent = topping.innerHTML;
+            toppingsList.appendChild(newTopping);
+        };
+    });
+    
     pizza.append(name);
     pizza.append(author);
     pizza.append(toppingsTitle);
