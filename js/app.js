@@ -27,7 +27,7 @@ const populateToppingsList = function(toppings, container) {
         item.innerHTML = topping;
         item.setAttribute('id', 'a-topping');
         item.setAttribute('data-selected', "false");
-        item.setAttribute('style','color: white; padding: 12px 16px; text-decoration: none; width: 124px; display: block; background-color: rgb(211, 211, 211)');
+        item.setAttribute('style','color: white; padding: 12px 16px; text-decoration: none; width: 124px; display: block; background-color: rgb(193, 193, 193)');
         
         // add 3 event listeners for each element:
         item.addEventListener('mouseenter', handleHover);
@@ -58,18 +58,18 @@ const handleClick = function(event) {
 };
 
 const handleLeave = function(event) {
-    event.target.style.backgroundColor = event.target.dataset.selected === "false" ? 'rgb(211, 211, 211)' : 'rgb(210, 0, 0)';
+    event.target.style.backgroundColor = event.target.dataset.selected === "false" ? 'rgb(193, 193, 193)' : 'rgb(210, 0, 0)';
 };
 
 const handleHover = function(event) {
-    event.target.style.backgroundColor = event.target.dataset.selected === "false" ? 'rgb(193, 193, 193)' : 'rgb(120, 0, 0)';
+    event.target.style.backgroundColor = event.target.dataset.selected === "false" ? 'rgb(177, 177, 177)' : 'rgb(120, 0, 0)';
 };
 
 // capture form submit event, create item and reset form
 const handleNewEntry = function(event) {
     event.preventDefault();
     const newPizza = createNewPizza(event);
-    const displayArea = document.querySelector('#display-pizzas');
+    const displayArea = document.querySelector('#pizzas');
     displayArea.appendChild(newPizza);
 
     // reset form and options object
@@ -91,9 +91,23 @@ const createNewPizza = function(event) {
     const creator = event.target.created_by.value === "" ? "anon" : event.target.created_by.value;
     author.textContent = `created by ${creator}`;
 
+    const base = document.createElement('p');
+    base.setAttribute("style", "padding-left: 10px; margin-bottom: 0px; margin-top: 0px; text-align: left");
+    base.textContent = `base: ${event.target.base.value}`;
+
+    const sauce = document.createElement('p');
+    sauce.setAttribute("style", "padding-left: 10px; margin-bottom: 0px; margin-top: 0px; text-align: left")
+    sauce.textContent = `sauce: ${event.target.sauce.value}`;
+
     const toppingsTitle = document.createElement('h4');
+    toppingsTitle.setAttribute("style", "margin-bottom: 5px; margin-top: 8px;")
     toppingsTitle.textContent = "Toppings"
+
+
+    const innerDiv = document.createElement('div');
+    innerDiv.setAttribute("style", "width: 85%; height: 100px; margin: 5%; overflow-x: auto;")
     const toppingsList = document.createElement('ul');
+    toppingsList.setAttribute("style", "margin-top: 5px;");
 
     // retrieve toppings div and populate list
     const toppings = document.querySelectorAll(".toppings > a");
@@ -101,17 +115,20 @@ const createNewPizza = function(event) {
     toppings.forEach((topping) => {
         if (topping.dataset.selected === "true") {
             topping.dataset.selected = "false";
-            topping.style.backgroundColor = 'rgb(211, 211, 211)';
+            topping.style.backgroundColor = 'rgb(193, 193, 193)';
             const newTopping = document.createElement('li');
             newTopping.textContent = topping.innerHTML;
             toppingsList.appendChild(newTopping);
         };
     });
-    
+    innerDiv.appendChild(toppingsList);
+
     pizza.append(name);
     pizza.append(author);
+    pizza.append(base);
+    pizza.append(sauce);
     pizza.append(toppingsTitle);
-    pizza.append(toppingsList);
+    pizza.append(innerDiv);
     return pizza;
 };
 

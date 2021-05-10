@@ -19,59 +19,69 @@
         <section class="content-wrapper" id="create">
             <h2>Create your own hideous abomination</h2>
             <form class="new-pizza-form">
-                    <div class="form-item" id="item-name">
-                        <label>
-                            Name Your Creation
-                            <input type="text" name="name">
-                        </label>
-                    </div>
+                <div class="form-item" id="item-name">
+                    <label>
+                        Name Your Creation
+                        <input type="text" name="name" required>
+                    </label>
+                </div>
 
-                    <div class="form-item" id="item-creator">
-                        <label>
-                            Creator
-                            <input type="text" name="created_by" placeholder="Dr Jane Dough">
-                        </label>
-                    </div>
+                <div class="form-item" id="item-creator">
+                    <label>
+                        Creator
+                        <input type="text" name="created_by" placeholder="Dr Jane Dough">
+                    </label>
+                </div>
 
-                    <div class="form-item" id="item-sauce">
-                        <label for="sauce" hidden>Sauce</label>
-                        <select class="select" id="sauce">
-                            <option value="" disabled selected hidden>Choose a sauce</option>
-                            <option value="marinara">Marinara</option>
-                            <option value="bbq">BBQ</option>
-                            <option value="bechamel">Bechamel</option>
-                            <option value="buffalo">Buffalo</option>
-                            <option value="pesto">Pesto</option>
-                        </select>
-                    </div>
+                <div class="form-item" id="item-sauce">
+                    <label for="sauce" hidden>Sauce</label>
+                    <select class="select" id="sauce" name="sauce">
+                        <option value="" disabled selected hidden>Choose a sauce</option>
+                        <option value="marinara">Marinara</option>
+                        <option value="bbq">BBQ</option>
+                        <option value="bechamel">Bechamel</option>
+                        <option value="buffalo">Buffalo</option>
+                        <option value="pesto">Pesto</option>
+                    </select>
+                </div>
 
-                    <div class="form-item" id="item-base">
-                        <label for="base" hidden>Base</label>
-                        <select class="select" id="base">
-                            <option value="" disabled selected hidden>Choose a base</option>
-                            <option value="italian">Italian</option>
-                            <option value="stuffed">Stuffed crust</option>
-                            <option value="deep">Deep dish</option>
-                        </select>
-                    </div>
+                <div class="form-item" id="item-base">
+                    <label for="base" hidden>Base</label>
+                    <select class="select" id="base" name="base">
+                        <option value="" disabled selected hidden>Choose a base</option>
+                        <option value="italian">Italian</option>
+                        <option value="stuffed">Stuffed crust</option>
+                        <option value="deep">Deep dish</option>
+                    </select>
+                </div>
 
-                    <div id="dropdown-container">
-                        <div id="toppings-dropdown">
-                            <button class="toppings-btn" type="button">Toppings</button>
-                            <div class="toppings">
-                                <!-- tags go here - populated by app.js -->
-                            </div>
+                <div id="dropdown-container" class="form-item">
+                    <div id="toppings-dropdown">
+                        <label for="toppings-btn">max five</label>
+                        <button name="toppings-btn" class="toppings-btn" type="button">Toppings</button>
+                        <div class="toppings">
+                            <!-- tags go here - populated by app.js -->
                         </div>
                     </div>
-                
-                <button type="submit" class="form-item" id="item-submit">
-                    <a href="#"></a>LIVE!!!
-                </button>
+                </div>
+
+                <div class="form-item" id="item-icon">
+                    <div class="ico"></div>
+                </div>
+                <div class="form-item" id="item-submit">
+                    <button type="submit" class="submit">
+                        <a href="#"></a>LIIIIVVVE!!!
+                    </button>
+                </div>
             </form>
+            
         </section>
             
         <section class="content-wrapper" id="display-pizzas">
             <h2>Previous "Experiments"</h2>
+            <div id="pizzas">
+                <!-- new pizza suggestions go here - populated by app.js -->
+            </div>
         </section>
     </div>
 </body>
